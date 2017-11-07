@@ -25,15 +25,16 @@ import (
 )
 
 var (
-	api_version    = "/api/v1"
-	datapoints_ep  = api_version + "/datapoints"
-	query_ep       = api_version + "/datapoints/query"
-	version_ep     = api_version + "/version"
-	health_ep      = api_version + "/health/check"
-	metricnames_ep = api_version + "/metricnames"
-	tagnames_ep    = api_version + "/tagnames"
-	tagvalues_ep   = api_version + "/tagvalues"
-	delmetric_ep   = api_version + "/metric/"
+	api_version      = "/api/v1"
+	datapoints_ep    = api_version + "/datapoints"
+	query_ep         = api_version + "/datapoints/query"
+	version_ep       = api_version + "/version"
+	health_ep        = api_version + "/health/check"
+	metricnames_ep   = api_version + "/metricnames"
+	tagnames_ep      = api_version + "/tagnames"
+	tagvalues_ep     = api_version + "/tagvalues"
+	delmetric_ep     = api_version + "/metric/"
+	deldatapoints_ep = api_version + "/datapoints/delete"
 )
 
 // This is the type that implements the Client interface.
@@ -89,8 +90,13 @@ func (hc *httpClient) DeleteMetric(name string) (*response.Response, error) {
 }
 
 // TODO: Deletes data in KairosDB using the query built by the builder.
-func (hc *httpClient) Delete(builder builder.QueryBuilder) (*response.Response, error) {
-	return nil, nil
+func (hc *httpClient) Delete(qb builder.QueryBuilder) (*response.Response, error) {
+	data, err := qb.Build()
+	if err != nil {
+		return nil, err
+	}
+
+	return hc.postData(hc.serverAddress+deldatapoints_ep, data)
 }
 
 // Checks the health of the KairosDB Server.
