@@ -14,7 +14,7 @@
 
 package aggregator
 
-import "github.com/ajityagaty/go-kairosdb/builder/utils"
+import "github.com/nctusdk/go-kairosdb/builder/utils"
 
 type sampling struct {
 	Value int            `json:"value,omitempty"`

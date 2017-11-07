@@ -15,8 +15,8 @@
 package builder
 
 import (
-	"github.com/ajityagaty/go-kairosdb/builder/aggregator"
-	"github.com/ajityagaty/go-kairosdb/builder/utils"
+	"github.com/nctusdk/go-kairosdb/builder/aggregator"
+	"github.com/nctusdk/go-kairosdb/builder/utils"
 )
 
 type TrimType string

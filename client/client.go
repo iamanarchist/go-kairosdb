@@ -15,8 +15,8 @@
 package client
 
 import (
-	"github.com/ajityagaty/go-kairosdb/builder"
-	"github.com/ajityagaty/go-kairosdb/response"
+	"github.com/nctusdk/go-kairosdb/builder"
+	"github.com/nctusdk/go-kairosdb/response"
 )
 
 type Client interface {
